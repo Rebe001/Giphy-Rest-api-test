@@ -9,7 +9,7 @@
 * [Author](#author)
 
 
-##Test Scenario Category
+## Test Scenario Category
 
 Different test scenarios should be considered during test case design.
 Requests to be done in isolation: only one param should be modified while leaving the rest of params has to be kept separately 
@@ -20,7 +20,7 @@ Negative testing with valid input
 Negative testing with invalid input
 Destructive testing
 
-##Test Action
+## Test Action
 
 All test cases should be verified by these test actions, both positive and negative testing. 
 Verify http status code
@@ -29,19 +29,17 @@ Verify error description is correct
 Endpoint responds to expected status codes and valid json object and error messages if it fails. Schema should be validated, including field name, type and values.
 
 ## How to run test case
-$ mvn clean
-$ mvn install
-$ run main method (to make sure connection went well)
+- `$ mvn clean`
+- `$ mvn install`
 
 run test case:
-- run tests under path (test/java/com/example/testingweb)
-- run in order:
+- run tests under path `test/java/com/example/testingweb`
+- run in the followering order:
   smokeTest 
   ExtendedPositiveTest
   InvalidInputNegativeTest
   Destructive Test
 - click Run Test from each class or method
-
 -test result is shown in console
 
 
@@ -71,10 +69,12 @@ run test case:
 		|			├─ExtendedPostiveTest.java
 		|		        ├─InvalidInputNegativeTest
 		|		        ├─ProjectConstants
-		└─readme.md            └─SmokeTest
+		└─readme.md             └─SmokeTest
 ``` 
 
-
+`jsonResponse.java`for http response body mapped with json object, verify parameter and its value in json body
+`CommonMethod.java`for reusable utility
+`ProjectContants.java`to store constants
 
 
 ## Author
