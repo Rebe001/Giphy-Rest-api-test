@@ -20,14 +20,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 public class ExtendedPositiveTest extends CommonMethod {
 
+    Logger logger = LogManager.getLogger(this.getClass());
     ObjectMapper objectMapper = new ObjectMapper();
     ResponseEntity<String> response;
-    private final Logger logger = LogManager.getLogger(this.getClass());
+    UriComponentsBuilder builder = getUriComponentBuilder();
+    JsonResponse jsonResponse;
 
     @Autowired
     private TestRestTemplate restTemplate;
-
-    UriComponentsBuilder builder = getUriComponentBuilder();
 
     @Test
     public void validLimitParamShouldPass() throws JsonProcessingException {
@@ -36,7 +36,7 @@ public class ExtendedPositiveTest extends CommonMethod {
         response = this.restTemplate.getForEntity(builder.toUriString(),
                 String.class);
         assertResponseIsCorrect(response);
-        JsonResponse jsonResponse = objectMapper.readValue(response.getBody(), JsonResponse.class);
+        jsonResponse = objectMapper.readValue(response.getBody(), JsonResponse.class);
         assertThat(jsonResponse.getPagination().getCount()).isEqualTo(1);
     }
 
@@ -46,7 +46,7 @@ public class ExtendedPositiveTest extends CommonMethod {
         response = this.restTemplate.getForEntity(builder.toUriString(),
                 String.class);
         assertResponseIsCorrect(response);
-        JsonResponse jsonResponse = objectMapper.readValue(response.getBody(), JsonResponse.class);
+        jsonResponse = objectMapper.readValue(response.getBody(), JsonResponse.class);
         assertThat(jsonResponse.getPagination().getCount()).isEqualTo(25);
     }
 
@@ -57,7 +57,7 @@ public class ExtendedPositiveTest extends CommonMethod {
         response = this.restTemplate.getForEntity(builder.toUriString(),
                 String.class);
         assertResponseIsCorrect(response);
-        JsonResponse jsonResponse = objectMapper.readValue(response.getBody(), JsonResponse.class);
+        jsonResponse = objectMapper.readValue(response.getBody(), JsonResponse.class);
         assertThat(jsonResponse.getPagination().getOffset()).isEqualTo(1);
     }
 
@@ -67,7 +67,7 @@ public class ExtendedPositiveTest extends CommonMethod {
         response = this.restTemplate.getForEntity(builder.toUriString(),
                 String.class);
         assertResponseIsCorrect(response);
-        JsonResponse jsonResponse = objectMapper.readValue(response.getBody(), JsonResponse.class);
+        jsonResponse = objectMapper.readValue(response.getBody(), JsonResponse.class);
         assertThat(jsonResponse.getPagination().getOffset()).isEqualTo(0);
     }
 
@@ -78,7 +78,7 @@ public class ExtendedPositiveTest extends CommonMethod {
         response = this.restTemplate.getForEntity(builder.toUriString(),
                 String.class);
         assertResponseIsCorrect(response);
-        JsonResponse jsonResponse = objectMapper.readValue(response.getBody(), JsonResponse.class);
+        jsonResponse = objectMapper.readValue(response.getBody(), JsonResponse.class);
         for (Datum datum : jsonResponse.getData())
             assertThat(datum.getRating()).isEqualTo("pg");
     }
@@ -90,7 +90,7 @@ public class ExtendedPositiveTest extends CommonMethod {
         response = this.restTemplate.getForEntity(builder.toUriString(),
                 String.class);
         assertResponseIsCorrect(response);
-        JsonResponse jsonResponse = objectMapper.readValue(response.getBody(), JsonResponse.class);
+        jsonResponse = objectMapper.readValue(response.getBody(), JsonResponse.class);
         for (Datum datum : jsonResponse.getData())
             assertThat(datum.getTitle()).isEqualTo("es");
     }
@@ -99,7 +99,7 @@ public class ExtendedPositiveTest extends CommonMethod {
     public void validRandomIdParamShouldPass() {
         logger.info("assert valid random id param should pass");
         builder.queryParam(ProjectConstants.random_id, "1234");
-        ResponseEntity<String> response = this.restTemplate.getForEntity(builder.toUriString(),
+        response = this.restTemplate.getForEntity(builder.toUriString(),
                 String.class);
         assertResponseIsCorrect(response);
     }

@@ -1,6 +1,5 @@
 package com.example.testingweb;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Test;
@@ -8,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
@@ -20,15 +18,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 public class DestructiveTest extends CommonMethod{
 
-    ObjectMapper objectMapper = new ObjectMapper();
+    Logger logger = LogManager.getLogger(this.getClass());
     ResponseEntity<String> response;
-    private final Logger logger = LogManager.getLogger(this.getClass());
-
+    UriComponentsBuilder builder = getUriComponentBuilder();
 
     @Autowired
     private TestRestTemplate restTemplate;
-
-    UriComponentsBuilder builder = getUriComponentBuilder();
 
     @Test
     public void UnsupportedPOSTForEndpointShouldFail() {

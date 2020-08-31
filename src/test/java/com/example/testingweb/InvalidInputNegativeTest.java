@@ -20,8 +20,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 public class InvalidInputNegativeTest extends CommonMethod{
 
+    Logger logger = LogManager.getLogger(this.getClass());
     ObjectMapper objectMapper = new ObjectMapper();
-    private final Logger logger = LogManager.getLogger(this.getClass());
     ResponseEntity<String> response;
     UriComponentsBuilder builder = getUriComponentBuilder();
     JsonResponse jsonResponse;
