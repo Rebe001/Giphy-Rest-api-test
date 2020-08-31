@@ -71,7 +71,7 @@ run test case:
 		|			├─ExtendedPostiveTest.java
 		|		        ├─InvalidInputNegativeTest
 		|		        ├─ProjectConstants
-		└─readMe.txt            └─SmokeTest
+		└─readme.md            └─SmokeTest
 ``` 
 
 
