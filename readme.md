@@ -1,4 +1,4 @@
-# task 3: Automated api testing and test case generation
+# Giphy api test
 
 ## Table of contents
 * [Test Scenario Category](#test-scenario-category)
@@ -50,7 +50,7 @@ run test case:
 
 ## Directory tree structure
 ```
-	└─ wallBox/
+	└─ giphy api test
 		├─ features/
 		|	└─ component/
 		|		└─TestFormPage.feature
