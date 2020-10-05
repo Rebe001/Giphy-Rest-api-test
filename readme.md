@@ -1,6 +1,7 @@
-# Giphy api test
+# Giphy REST api test
 
 ## Table of contents
+* [Introduction](#introduction)
 * [Test Scenario Category](#test-scenario-category)
 * [Test Action](#test-action)
 * [How to run test case](#how-to-run-test-case)
@@ -8,6 +9,9 @@
 * [Directory tree structure](#directory-tree-structure)
 * [Author](#author)
 
+## Introduction
+REST Api testing have been made using Giphy https://developers.giphy.com/docs/api/endpoint#search. For example call can be made to retrieve a list of images:
+GET http://api.giphy.com/v1/gifs/search?q=funny+cat&api_key=dc6zaTOxFJmzC.
 
 ## Test Scenario Category
 
